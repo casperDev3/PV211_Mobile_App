@@ -1,9 +1,21 @@
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+
 class Actions {
   addToCart = (id: number) => {
-    console.log('__addToCart', id);
+    console.log('addToCart', id);
+    console.log('finish addToCart');
   };
   addToFavorite = (id: number) => {
-    console.log('__addToFavorite', id);
+    // AsyncStorage.setItem('favorites', JSON.stringify(id));
+    console.log('addToFavorite', id);
+  };
+
+  getElementCart = () => {
+    // let products = AsyncStorage.getItem('cart') ? AsyncStorage.getItem('cart') : [];
+    // products = JSON.parse(products)
+
+    console.log('__product_cart');
+    return;
   };
 }
 
