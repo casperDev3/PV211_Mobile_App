@@ -1,21 +1,12 @@
 // import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Alert} from 'react-native';
 
 class Actions {
   addToCart = (id: number) => {
-    console.log('addToCart', id);
-    console.log('finish addToCart');
+    Alert.alert('You clicked to add cart');
   };
   addToFavorite = (id: number) => {
-    // AsyncStorage.setItem('favorites', JSON.stringify(id));
-    console.log('addToFavorite', id);
-  };
-
-  getElementCart = () => {
-    // let products = AsyncStorage.getItem('cart') ? AsyncStorage.getItem('cart') : [];
-    // products = JSON.parse(products)
-
-    console.log('__product_cart');
-    return;
+    Alert.alert('You clicked to add to Favorite');
   };
 }
 

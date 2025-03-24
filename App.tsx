@@ -1,18 +1,11 @@
 import React from 'react';
-import HomeScreen from './src/screens/home/HomeScreen.tsx';
-import {NavigationContainer} from '@react-navigation/native';
-// import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import StackNavigator from './src/navigation/StackNavigator.tsx';
+// import HomeScreen from './src/screens/home/HomeScreen.tsx';
+import ProductsScreen from './src/screens/products/ProductsScreen';
 
 function App(): React.JSX.Element {
   return (
     <>
-      {/*<HomeScreen />*/}
-      {/*<GestureHandlerRootView style={{flex: 1}}>*/}
-        <NavigationContainer>
-          <StackNavigator />
-        </NavigationContainer>
-      {/*</GestureHandlerRootView>*/}
+      <ProductsScreen />
     </>
   );
 }

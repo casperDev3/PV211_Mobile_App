@@ -15,7 +15,7 @@ const ProductItem = ({product}: any) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            actions.addToCart(product.id);
+            actions.addToFavorite(product.id);
           }}>
           <Text>Додати в улюблене</Text>
         </TouchableOpacity>
