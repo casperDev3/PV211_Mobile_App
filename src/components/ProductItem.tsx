@@ -1,23 +1,35 @@
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-import actions from '../utils/actions.ts';
+import {useDispatch} from 'react-redux';
+import {addToFavorite, addToCart} from "../store/slices/cartSlice.ts";
 
 const ProductItem = ({product}: any) => {
+    const dispatch = useDispatch();
   return (
     <View style={style.card} key={product.id}>
       <Text>{product.title}</Text>
       <View>
         <TouchableOpacity
           onPressIn={() => {
-            actions.addToCart(product.id);
+            dispatch(addToCart(product.id));
           }}>
-          <Text>Додати в корзину</Text>
+          <Text
+            style={{
+              color: 'green',
+            }}>
+            Додати в корзину
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            actions.addToFavorite(product.id);
+            dispatch(addToFavorite(product.id));
           }}>
-          <Text>Додати в улюблене</Text>
+          <Text
+            style={{
+              color: 'red',
+            }}>
+            Додати в улюблене
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

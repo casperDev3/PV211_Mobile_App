@@ -11,6 +11,10 @@ class Api {
     const response = await fetch(`${this.baseUrl}/${endpoint}`);
     return await response.json();
   }
+  async getOne(endpoint: string, params: string | number): Promise<any> {
+    const response = await fetch(`${this.baseUrl}/${endpoint}/${params}`);
+    return await response.json();
+  }
 }
 
 // singleton
