@@ -43,6 +43,7 @@ const SPScreen = ({route}: any) => {
           style={styles.image}
           resizeMode="contain"
         />
+
         <Text style={styles.title}>{product.title}</Text>
         <Text style={styles.category}>Категорія: {product.category}</Text>
         <Text style={styles.description}>{product.description}</Text>
