@@ -1,4 +1,4 @@
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {addToFavorite, addToCart} from "../store/slices/cartSlice.ts";
@@ -31,6 +31,13 @@ const ProductItem = ({product}: any) => {
             Додати в улюблене
           </Text>
         </TouchableOpacity>
+          <TouchableOpacity onPress={
+              ()=> Alert.alert('test Btn', `${product.id}`)
+          }>
+              <Text>
+                  View product
+              </Text>
+          </TouchableOpacity>
       </View>
     </View>
   );

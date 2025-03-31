@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../../utils/api.ts';
 import {
   Text,
@@ -6,17 +6,18 @@ import {
   SafeAreaView,
   StyleSheet,
   Platform,
-  TouchableOpacity,
   ScrollView,
 } from 'react-native';
 import ProductItem from '../../components/ProductItem.tsx';
+import StatCart from "../../components/StatCart.tsx";
+import FProducts from "../../sections/favorite/Products.tsx";
 
 const ProductsScreen = () => {
-  // states
+  // стани
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
 
-  // on mounted
+  // при монтуванні
   useEffect(() => {
     try {
       setLoading(true);
@@ -29,41 +30,62 @@ const ProductsScreen = () => {
       setLoading(false);
     }
   }, []);
+
   return (
-    <>
-      <SafeAreaView>
+      <SafeAreaView style={styles.safeArea}>
+        <StatCart />
+        <FProducts />
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Amazon Mobile</Text>
+        </View>
         <View style={styles.container}>
-          <View>
-            <Text style={styles.title}>Список продуктів</Text>
-          </View>
-          <ScrollView>
-            {products.map((product: any) => {
-              return <ProductItem key={product.id} product={product} />;
-            })}
+          <Text style={styles.title}>Список продуктів</Text>
+          <ScrollView contentContainerStyle={styles.scrollView}>
+            {products.map((product: any) => (
+                <ProductItem key={product.id} product={product} />
+            ))}
           </ScrollView>
         </View>
       </SafeAreaView>
-    </>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
+  header: {
+    backgroundColor: '#131921', // фірмовий синій відтінок Amazon
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerTitle: {
+    color: '#ffffff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
   container: {
-    // backgroundColor: '#f00',
-    ...Platform.select({
-      android: {
-        marginTop: 26,
-      },
-      ios: {},
-      web: {},
-      windows: {},
-      macos: {},
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingTop: Platform.select({
+      android: 26,
+      ios: 0,
+      default: 0,
     }),
+    backgroundColor: '#ffffff',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#131921',
     marginBottom: 12,
+    marginTop: 10,
+  },
+  scrollView: {
+    paddingBottom: 20,
   },
 });
 
