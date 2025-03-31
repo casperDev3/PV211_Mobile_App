@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import api from '../../utils/api.ts';
 import {
   Text,
@@ -9,8 +9,8 @@ import {
   ScrollView,
 } from 'react-native';
 import ProductItem from '../../components/ProductItem.tsx';
-import StatCart from "../../components/StatCart.tsx";
-import FProducts from "../../sections/favorite/Products.tsx";
+import StatCart from '../../components/StatCart.tsx';
+import FProducts from '../../sections/favorite/Products.tsx';
 
 const ProductsScreen = () => {
   // стани
@@ -32,7 +32,8 @@ const ProductsScreen = () => {
   }, []);
 
   return (
-      <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
         <StatCart />
         <FProducts />
         <View style={styles.header}>
@@ -40,13 +41,12 @@ const ProductsScreen = () => {
         </View>
         <View style={styles.container}>
           <Text style={styles.title}>Список продуктів</Text>
-          <ScrollView contentContainerStyle={styles.scrollView}>
-            {products.map((product: any) => (
-                <ProductItem key={product.id} product={product} />
-            ))}
-          </ScrollView>
+          {products.map((product: any) => (
+            <ProductItem key={product.id} product={product} />
+          ))}
         </View>
-      </SafeAreaView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
